@@ -1,50 +1,108 @@
-# Welcome to your Expo app 👋
+# Stoic
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Stoic is a cross-platform mobile application designed to provide accessible, affordable, and stigma-free mental health support. Leveraging AI-driven emotion detection, personalized coping strategies, and community engagement, Stoic acts as a virtual life coach to help users manage stress, anxiety, and depression.
 
-## Get started
+## Features
 
-1. Install dependencies
+* **Emotion Analysis via Chatbot**
 
+  * Real-time sentiment detection (stress, anxiety, depression, suicidal ideation) using DeepSeek-R1.
+  * Emotion logging and trend visualization over time.
+* **Mood Tracking & Insights**
+
+  * Weekly check-ins and daily mood logging.
+  * Interactive charts to visualize emotional progress.
+* **Personalized Coping Strategies**
+
+  * Contextual recommendations: mindfulness, breathing exercises, self-care routines.
+  * Guided journaling prompts.
+* **AI Chat Functionality**
+
+  * Multi-turn dialogues with context persistence.
+  * Session management and history with delete options.
+* **Onboarding & Decision Tree Assessment**
+
+  * Initial questionnaire to tailor content and resources.
+  * Skip option with default "normal" status.
+* **Community & Rooms**
+
+  * Create, join, and manage public/private chat rooms.
+  * Post, comment, like, react, and moderate content.
+* **Real-Time Notifications**
+
+  * Push and in-app alerts for check-ins, messages, and community activity.
+  * Read status and inbox management via WebSockets.
+* **Localization**
+
+  * Full support for English and Arabic (RTL layout).
+  * Persistent language preference per user.
+* **Security & Validation**
+
+  * Role-based access control (Admin vs. Regular User).
+  * Input validation, profanity filtering, and error handling.
+
+## Tech Stack
+
+* **Frontend**: React Native
+* **Backend**: Spring Boot, Java
+* **Database**: MySQL
+* **AI & NLP**: DeepSeek-R1 sentiment analysis model
+* **Deployment**: Docker, Docker Compose, OpenShift
+* **Testing**: JUnit, Mockito, React Testing Library
+
+## Prerequisites
+
+* Node.js (>=14)
+* npm or yarn
+* Java 11+
+* Docker & Docker Compose
+* OpenShift CLI (for production deployment)
+
+## Installation & Running Locally
+
+1. **Clone the repository**
+
+   ```bash
+   git clone https://github.com/your-org/stoic.git
+   cd stoic
+   ```
+
+2. **Backend Setup**
+
+   * Configure `application.properties` with your MySQL credentials.
+   * Build and run with Docker Compose:
+
+     ```bash
+     docker-compose up --build
+     ```
+   * The Spring Boot API will be available at `http://localhost:8080`.
+
+3. **Mobile App Setup**
+you should install expo version 52 from here
+https://expo.dev/go?sdkVersion=52&platform=android&device=true
    ```bash
    npm install
+   npx expo start
    ```
 
-2. Start the app
+   * Open the Expo client on your device or simulator.
 
-   ```bash
-    npx expo start
-   ```
+4. **Environment Variables**
 
-In the output, you'll find options to open the app in a
+   * Create a `.env` file in the `mobile` folder with API URL and DeepSeek API key:
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+     ```ini
+     API_URL=http://localhost:8080/api
+     DEEPSEEK_KEY=your_deepseek_key
+     ```
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+## Usage
 
-## Get a fresh project
+1. **Onboarding**: Complete the initial assessment or skip to start using Stoic.
+2. **Chatbot**: Send messages to receive AI-driven support and coping strategies.
+3. **Check-Ins**: Answer weekly questionnaires to track your mood.
+4. **Community**: Join rooms, share posts, and engage with peers.
+5. **Settings**: Change language, update profile, and manage notifications.
 
-When you're ready, run:
 
-```bash
-npm run reset-project
-```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
